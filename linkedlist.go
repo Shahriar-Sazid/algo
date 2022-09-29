@@ -22,12 +22,9 @@ func NewLinkedList[T constraints.Ordered]() LinkedList[T] {
 }
 
 func (a *LinkedList[T]) Insert(idx uint, data T) bool {
-	// case 1: at the beginning of the list
-	// case 2: within the list
-	// case 3: at the end of the list
 	prev := (*Node[T])(nil)
 	cur := a.head
-	// 0, 1, 2 X
+
 	for i := uint(0); i != idx; i++ {
 		if cur == nil {
 			return false
