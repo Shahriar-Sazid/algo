@@ -8,6 +8,14 @@ import (
 
 func TestLinkedList(t *testing.T) {
 	list := NewLinkedList[int]()
+	got, ok := list.At(0)
+	Nil(t, got)
+	False(t, ok)
+
+	got, ok = list.Set(0, 20)
+	Nil(t, got)
+	False(t, ok)
+
 	list.Append(1)
 
 	length := list.Length()
@@ -89,5 +97,13 @@ func TestLinkedList(t *testing.T) {
 		node, _ := list.At(uint(i))
 		Equal(t, i+1, node.Data)
 	}
+
+	got, ok = list.At(2393)
+	Nil(t, got)
+	False(t, ok)
+
+	got, ok = list.Set(2393, 20)
+	Nil(t, got)
+	False(t, ok)
 
 }
