@@ -13,3 +13,14 @@ func BubbleSort[T constraints.Ordered](slice []T) {
 		}
 	}
 }
+
+func InsertionSort[T constraints.Ordered](slice []T) {
+	for i := 1; i < len(slice); i++ {
+		el := slice[i]
+		j := i - 1
+		for ; j != -1 && slice[j] > el; j-- {
+			slice[j+1] = slice[j]
+		}
+		slice[j+1] = el
+	}
+}
