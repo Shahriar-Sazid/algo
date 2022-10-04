@@ -25,6 +25,10 @@ func TestSorting(t *testing.T) {
 	BubbleSort(s)
 	isSorted(t, s)
 
+	var n []int
+	BubbleSort(n)
+	isSorted(t, n)
+
 	s = []int{1}
 	BubbleSort(s)
 	isSorted(t, s)
@@ -41,8 +45,32 @@ func TestSorting(t *testing.T) {
 	InsertionSort(s)
 	isSorted(t, s)
 
+	var n1 []int
+	BubbleSort(n1)
+	isSorted(t, n1)
+
 	s = []int{1}
 	InsertionSort(s)
+	isSorted(t, s)
+
+	s = []int{1, 3, 42, 22, 3, 3, 1, 2}
+	MergeSort(s)
+	isSorted(t, s)
+
+	ss = []string{"af", "sdj", "sdf", "23", "ter", "aa", "b"}
+	MergeSort(ss)
+	isSorted(t, ss)
+
+	s = []int{}
+	MergeSort(s)
+	isSorted(t, s)
+
+	var n2 []int
+	BubbleSort(n2)
+	isSorted(t, n2)
+
+	s = []int{1}
+	MergeSort(s)
 	isSorted(t, s)
 
 }
