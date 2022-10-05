@@ -46,7 +46,7 @@ func TestSorting(t *testing.T) {
 	isSorted(t, s)
 
 	var n1 []int
-	BubbleSort(n1)
+	InsertionSort(n1)
 	isSorted(t, n1)
 
 	s = []int{1}
@@ -66,11 +66,30 @@ func TestSorting(t *testing.T) {
 	isSorted(t, s)
 
 	var n2 []int
-	BubbleSort(n2)
+	MergeSort(n2)
 	isSorted(t, n2)
 
 	s = []int{1}
 	MergeSort(s)
 	isSorted(t, s)
 
+	s = []int{1, 3, 42, 22, 3, 3, 1, 2}
+	QuickSort(s)
+	isSorted(t, s)
+
+	ss = []string{"af", "sdj", "sdf", "23", "ter", "aa", "b"}
+	QuickSort(ss)
+	isSorted(t, ss)
+
+	s = []int{}
+	QuickSort(s)
+	isSorted(t, s)
+
+	var n3 []int
+	QuickSort(n3)
+	isSorted(t, n3)
+
+	s = []int{1}
+	QuickSort(s)
+	isSorted(t, s)
 }

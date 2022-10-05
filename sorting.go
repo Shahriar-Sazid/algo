@@ -58,3 +58,27 @@ func MergeSort[T constraints.Ordered](slice []T) {
 		}
 	}
 }
+
+func QuickSort[T constraints.Ordered](slice []T) {
+	if len(slice) == 0 || len(slice) == 1 {
+		return
+	}
+	pivot := slice[len(slice)-1]
+
+	j := 0
+	for i := 0; i < len(slice)-1; i++ {
+		if slice[i] < pivot {
+			swap(&slice[i], &slice[j])
+			j++
+		}
+	}
+
+	for i := len(slice) - 2; i >= j; i-- {
+		slice[i+1] = slice[i]
+	}
+
+	slice[j] = pivot
+
+	QuickSort(slice[:j])
+	QuickSort(slice[j+1:])
+}
