@@ -24,28 +24,23 @@ func InsertionSort[T constraints.Ordered](slice []T) {
 }
 
 func MergeSort[T constraints.Ordered](slice []T) {
-	m := len(slice) / 2
-
-	if len(slice) == 0 {
+	switch len(slice) {
+	case 0, 1:
 		return
-	}
-	if len(slice) == 1 {
-		return
-	}
-	if len(slice) == 2 {
+	case 2:
 		if slice[0] > slice[1] {
 			swap(&slice[0], &slice[1])
 		}
 		return
 	}
 
+	m := len(slice) / 2
+
 	MergeSort(slice[:m])
 	MergeSort(slice[m:])
 
-	left := make([]T, m)
-	right := make([]T, len(slice)-m)
-	left = append(left, slice[:m]...)
-	right = append(right, slice[m:]...)
+	left := append(make([]T, m-1), slice[:m]...)
+	right := append(make([]T, len(slice)-m), slice[m:]...)
 
 	j, k := 0, 0
 	for i := 0; i < len(slice); i++ {
@@ -60,9 +55,11 @@ func MergeSort[T constraints.Ordered](slice []T) {
 }
 
 func QuickSort[T constraints.Ordered](slice []T) {
-	if len(slice) == 0 || len(slice) == 1 {
+	switch len(slice) {
+	case 0, 1:
 		return
 	}
+
 	pivot := slice[len(slice)-1]
 
 	j := 0
