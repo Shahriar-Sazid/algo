@@ -37,7 +37,7 @@ func Test_BinarySearch(t *testing.T) {
 	Nil(t, err)
 	True(t, found)
 
-	s = []string{"abc", "def", "aghi", "gri", "ijk"}
+	s = []string{"abc", "def", "agha", "gri", "ijk"}
 	_, err = BinarySearchWithCheck(s, "ijk")
 	NotNil(t, err)
 }
