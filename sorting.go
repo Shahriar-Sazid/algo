@@ -39,12 +39,22 @@ func MergeSort[T constraints.Ordered](slice []T) {
 	MergeSort(slice[:m])
 	MergeSort(slice[m:])
 
-	left := append(make([]T, m), slice[:m]...)
-	right := append(make([]T, len(slice)-m), slice[m:]...)
+	left := append(make([]T, 0, m), slice[:m]...)
+	right := append(make([]T, 0, len(slice)-m), slice[m:]...)
 
 	j, k := 0, 0
 	for i := 0; i < len(slice); i++ {
-		if left[j] < right[k] {
+		takeLeft := func() bool {
+			if j == len(left) {
+				return false
+			}
+			if k == len(right) {
+				return true
+			}
+			return left[j] < right[k]
+		}
+
+		if takeLeft() {
 			slice[i] = left[j]
 			j++
 		} else {
